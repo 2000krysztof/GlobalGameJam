@@ -1,32 +1,49 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 
 public class PlayerBehaviour : MonoBehaviour
 {
-
 	PlayerBaseState currentState;
 	PlayerDefaultState defaultState;
 
+
+
+	[SerializeField]
+	float moveSpeed =10;
 
     void Start()
     {
 		defaultState = new PlayerDefaultState();
 		currentState = defaultState;
+		currentState.EnterState(this);
     }
 
     void Update()
     {
-        
+        currentState.UpdateState(this);
     }
 	
 	public void LookAt(Vector2 point){
-		float angle = Mathf.Atan2(point.x,point.y);
+		Vector2 difference = (Vector2)transform.position - point;
+		float angle = Mathf.Atan2(difference.y,difference.x)+ Mathf.PI*0.5f; 
 		angle *= Mathf.Rad2Deg;
 		transform.rotation = Quaternion.Euler(new Vector3(0,0,angle));
 	}
+
+	public void Move(Vector3 direction){
+		transform.position += direction*moveSpeed*Time.deltaTime;
+		
+
+	}
+
+
+
+
+
+
+
+
 
 	public void OnLook(InputValue callback){
 		Vector2 lookDirection = callback.Get<Vector2>();
@@ -42,5 +59,8 @@ public class PlayerBehaviour : MonoBehaviour
 		currentState.Fire(this);
 	}
 
-
+	public void SwitchState(PlayerBaseState state){
+		currentState = state;
+		state.EnterState(this);
+	}
 }
