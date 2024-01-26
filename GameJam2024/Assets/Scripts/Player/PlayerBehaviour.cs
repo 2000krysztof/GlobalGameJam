@@ -8,15 +8,16 @@ public class PlayerBehaviour : MonoBehaviour
 	PlayerDefaultState defaultState;
 
 
-
 	[SerializeField]
 	float moveSpeed =10;
+	CameraBehaviour cameraBehaviour;
 
     void Start()
     {
 		defaultState = new PlayerDefaultState();
 		currentState = defaultState;
 		currentState.EnterState(this);
+		cameraBehaviour = Camera.main.transform.GetComponent<CameraBehaviour>();
     }
 
     void Update()
@@ -33,10 +34,9 @@ public class PlayerBehaviour : MonoBehaviour
 
 	public void Move(Vector3 direction){
 		transform.position += direction*moveSpeed*Time.deltaTime;
-		
-
+		cameraBehaviour.scaleCameraBasedOnMovement(direction);	
+			
 	}
-
 
 
 
