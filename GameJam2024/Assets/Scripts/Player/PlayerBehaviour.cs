@@ -1,16 +1,23 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerBehaviour : MonoBehaviour
+public class PlayerBehaviour : MonoBehaviour, IDamageable
 {
 	PlayerBaseState currentState;
 	public PlayerDefaultState defaultState = new PlayerDefaultState();
 	public PlayerMoveingState moveingState = new PlayerMoveingState();
+	public PlayerAtackingState atackingState = new PlayerAtackingState();
+	public PlayerDeadState deadState = new PlayerDeadState();
+
 
 	[SerializeField]
-	float moveSpeed =10;
+	float moveSpeed =10,
+	health = 100;
+	
+
 	CameraBehaviour cameraBehaviour;
-	SpriteRenderer playerSpriteRender;
+	public SpriteRenderer playerSpriteRender;
 	
 	[Header("Sprite Bop")]
 	[SerializeField]
@@ -19,8 +26,20 @@ public class PlayerBehaviour : MonoBehaviour
 	float bopScale;
 	public SpriteBop spriteBopComponent;
 
+	public bool hasHammer = true;
+	
+	
+	public Sprite defaultTexture,
+					pickupTexture,
+					hasHammerTexture,
+					isAttackingTexture;
+
+	public Rigidbody2D rigidBody;
+	
+
     void Start()
     {
+		rigidBody = GetComponent<Rigidbody2D>();
 		cameraBehaviour = Camera.main.transform.GetComponent<CameraBehaviour>();
 		playerSpriteRender = GetComponent<SpriteRenderer>();
 
@@ -32,8 +51,8 @@ public class PlayerBehaviour : MonoBehaviour
 
     void Update()
     {
-		print(defaultState);
         currentState.UpdateState(this);
+		cameraBehaviour.scaleCameraBasedOnMovement(rigidBody.velocity);
     }
 	
 	public void LookAt(Vector2 point){
@@ -43,18 +62,18 @@ public class PlayerBehaviour : MonoBehaviour
 		transform.rotation = Quaternion.Euler(new Vector3(0,0,angle));
 	}
 
-	public void Move(Vector3 direction){
-		transform.position += direction*moveSpeed*Time.deltaTime;
-		cameraBehaviour.scaleCameraBasedOnMovement(direction);	
-			
+
+	
+	public void attack(){
+		SwitchState(atackingState);	
+}	
+
+
+
+	public void takeDamage(float damage){
+		health -= damage;
+		//TODO make sure to switch state when this drops below 0;
 	}
-
-
-
-
-
-
-
 
 	public void OnLook(InputValue callback){
 		Vector2 lookDirection = callback.Get<Vector2>();
@@ -71,6 +90,7 @@ public class PlayerBehaviour : MonoBehaviour
 	}
 
 	public void SwitchState(PlayerBaseState state){
+		print(state);
 		currentState = state;
 		state.EnterState(this);
 	}
