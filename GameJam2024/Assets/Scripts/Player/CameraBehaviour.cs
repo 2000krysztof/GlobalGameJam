@@ -23,7 +23,7 @@ public class CameraBehaviour : MonoBehaviour{
 		cameraSize = cameraMaxScale;
 	}
 
-	void LateUpdate(){
+	void FixedUpdate(){
 		Vector3 newPos = Vector3.Lerp(transform.position, target.position+offset, Time.deltaTime * speed); 
 		transform.position = newPos;
 		camera.orthographicSize = cameraSize;	
