@@ -1,27 +1,38 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-
 public class PlayerBehaviour : MonoBehaviour
 {
 	PlayerBaseState currentState;
-	PlayerDefaultState defaultState;
-
+	public PlayerDefaultState defaultState = new PlayerDefaultState();
+	public PlayerMoveingState moveingState = new PlayerMoveingState();
 
 	[SerializeField]
 	float moveSpeed =10;
 	CameraBehaviour cameraBehaviour;
+	SpriteRenderer playerSpriteRender;
+	
+	[Header("Sprite Bop")]
+	[SerializeField]
+	float bopSpeed;
+	[SerializeField]
+	float bopScale;
+	public SpriteBop spriteBopComponent;
 
     void Start()
     {
-		defaultState = new PlayerDefaultState();
+		cameraBehaviour = Camera.main.transform.GetComponent<CameraBehaviour>();
+		playerSpriteRender = GetComponent<SpriteRenderer>();
+
+		spriteBopComponent = new SpriteBop(transform,bopSpeed, bopScale);
+
 		currentState = defaultState;
 		currentState.EnterState(this);
-		cameraBehaviour = Camera.main.transform.GetComponent<CameraBehaviour>();
     }
 
     void Update()
     {
+		print(defaultState);
         currentState.UpdateState(this);
     }
 	

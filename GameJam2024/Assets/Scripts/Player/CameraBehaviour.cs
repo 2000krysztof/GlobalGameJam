@@ -20,6 +20,7 @@ public class CameraBehaviour : MonoBehaviour{
 
 	void Start(){
 		camera = GetComponent<Camera>();
+		cameraSize = cameraMaxScale;
 	}
 
 	void LateUpdate(){
