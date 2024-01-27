@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LionBehaviour : MonoBehaviour
+public class LionBehaviour : MonoBehaviour, IDamageable
 {
 	LionBaseState currentState;
 	
@@ -17,18 +17,24 @@ public class LionBehaviour : MonoBehaviour
 		  bopSpeed,
 		  bopHeight;
 
-	public	SpriteBop spriteBop;	
-    
+	public	SpriteBop spriteBop;
+
+	public Sprite lionDefaultTexture,
+					lionAttackTexture,
+					lionDeadTexture;
+	
+
+	public new Rigidbody2D rigidbody;
+	public SpriteRenderer spriteRenderer;
+	
 
 	void Start()
     {
 		spriteBop = new SpriteBop(transform, bopSpeed,bopHeight);
-
-	
-
+		spriteRenderer = GetComponent<SpriteRenderer>();
 		currentState = idleState;
-		
-    }
+		rigidbody = GetComponent<Rigidbody2D>();
+	}
 
     void Update()
     {
@@ -50,10 +56,14 @@ public class LionBehaviour : MonoBehaviour
 
 
 	public void Move(Transform transform, Vector2 playerPosition){
-		transform.position = Vector3.MoveTowards(transform.position, playerPosition, Time.deltaTime*moveSpeed);
+		LookAt(playerPosition);
+		rigidbody.velocity = transform.up;
 	}
 
-
+	public void takeDamage(float damage){
+		health -= damage;
+		if(health <= 0){switchState(deadState);}
+	}
 
 	void OnTriggerEnter2D(Collider2D col){
 		PlayerBehaviour player;
