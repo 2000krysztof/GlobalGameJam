@@ -2,11 +2,9 @@ using UnityEngine;
 
 public abstract class PlayerBaseState{
 
-	Vector3 moveDirection = Vector3.zero;
-
+	protected Vector3 moveDirection = Vector3.zero;
 
 	public virtual void EnterState(PlayerBehaviour behaviour){
-		
 	}
 	public virtual void UpdateState(PlayerBehaviour behaviour){
 		behaviour.Move(moveDirection);
@@ -26,4 +24,6 @@ public abstract class PlayerBaseState{
 		direction = (Vector2)Camera.main.ScreenToWorldPoint(direction);
 		behaviour.LookAt(direction);
 	}
+
+
 }
