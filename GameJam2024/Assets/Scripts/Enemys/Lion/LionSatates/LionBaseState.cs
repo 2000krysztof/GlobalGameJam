@@ -14,4 +14,9 @@ public abstract class LionBaseState{
 	public virtual void PlayerDetected(LionBehaviour behaviour, PlayerBehaviour player){
 				
 	}
+
+
+	public virtual void HasCollided(LionBehaviour behaviour, IDamageable damageable){
+		
+	}
 }

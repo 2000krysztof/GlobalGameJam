@@ -11,9 +11,11 @@ public class LionBehaviour : MonoBehaviour, IDamageable
 	public LionDeadState deadState = new LionDeadState();
 	public LionAtackingState atackingState = new LionAtackingState();
 
-	[SerializeField]
+	public
 	float health,
 		  moveSpeed,
+		  chrageSpeed,
+		  attackDistance,
 		  bopSpeed,
 		  bopHeight;
 
@@ -22,7 +24,11 @@ public class LionBehaviour : MonoBehaviour, IDamageable
 	public Sprite lionDefaultTexture,
 					lionAttackTexture,
 					lionDeadTexture;
+
+	public AudioSource audioSource;
+	public AudioClip[] clips;
 	
+
 
 	public new Rigidbody2D rigidbody;
 	public SpriteRenderer spriteRenderer;
@@ -57,7 +63,7 @@ public class LionBehaviour : MonoBehaviour, IDamageable
 
 	public void Move(Transform transform, Vector2 playerPosition){
 		LookAt(playerPosition);
-		rigidbody.velocity = transform.up;
+		rigidbody.velocity = transform.up*moveSpeed;
 	}
 
 	public void takeDamage(float damage){
@@ -71,5 +77,11 @@ public class LionBehaviour : MonoBehaviour, IDamageable
 			currentState.PlayerDetected(this, player);			
 		}
 	}
-
+	
+	void OnCollisionEnter2D(Collision2D coll){
+		IDamageable damageable;
+		if(coll.gameObject.TryGetComponent<IDamageable>(out damageable)){
+			currentState.HasCollided(this, damageable);
+		}
+	}
 }

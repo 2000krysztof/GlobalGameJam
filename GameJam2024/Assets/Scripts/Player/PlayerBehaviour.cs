@@ -15,6 +15,7 @@ public class PlayerBehaviour : MonoBehaviour, IDamageable
 	float moveSpeed =10,
 	health = 100;
 	
+	public float hitStrength;
 
 	CameraBehaviour cameraBehaviour;
 	public SpriteRenderer playerSpriteRender;
@@ -37,6 +38,8 @@ public class PlayerBehaviour : MonoBehaviour, IDamageable
 
 	public Rigidbody2D rigidBody;
 	public Transform damageArea;
+
+	public AudioSource audioSource;
 
     void Start()
     {
@@ -83,18 +86,10 @@ public class PlayerBehaviour : MonoBehaviour, IDamageable
 	}
 
 
-	
-	public void attack(){
-		SwitchState(atackingState);	
-	}	
-
-
-
 	public void takeDamage(float damage){
 		health -= damage;
 		if(health <= 0)
 			SwitchState(deadState);
-		//TODO make sure to switch state when this drops below 0;
 	}
 
 	public void OnLook(InputValue callback){

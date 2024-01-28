@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4272795639714134607}
   - component: {fileID: 3338490883105240623}
   - component: {fileID: 9146438722890259934}
+  - component: {fileID: 1853115005961608950}
   m_Layer: 0
   m_Name: Hammer
   m_TagString: Untagged
@@ -148,6 +149,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1853115005961608950
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
