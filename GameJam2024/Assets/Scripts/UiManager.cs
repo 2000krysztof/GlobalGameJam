@@ -1,18 +1,75 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class UiManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+	public static UiManager Singleton;
+
+
+    void Awake()
     {
-        
+        if(Singleton == null){
+			Singleton = this;
+		}else{
+			Destroy(Singleton.gameObject);
+			Singleton = this;
+		}
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
+	public RectTransform[] toggleAbles;
+
+	private bool isPaused = false;
+
+
+	public void TogglePause(){
+		if(isPaused){
+			ResumeGame();
+		}else{
+			PauseGame();
+		}
+	}	
+
+	public void PauseGame(){
+		Time.timeScale = 0;
+		isPaused = true;
+
+		foreach(RectTransform rectT in toggleAbles){
+			rectT.gameObject.SetActive(true);
+		}
+	}
+
+
+	public void ResumeGame(){
+		Time.timeScale = 1;
+		isPaused = false;
+		
+		foreach(RectTransform rectT in toggleAbles){
+			rectT.gameObject.SetActive(false);
+		}
+	}
+
+
+	public void BackToMainMenu(){
+
+		SceneManager.LoadScene("Main Menu", LoadSceneMode.Single);
+	}
+
+	
+	public void StartGame(){
+		SceneManager.LoadScene("Playground", LoadSceneMode.Single);
+	}
+
+	public void ExitGame(){
+		Application.Quit();
+	}
 }
+
+
+
+
+
+

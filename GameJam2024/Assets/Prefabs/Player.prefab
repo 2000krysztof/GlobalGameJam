@@ -117,6 +117,7 @@ MonoBehaviour:
   rigidBody: {fileID: 0}
   damageArea: {fileID: 1376143545433043231}
   audioSource: {fileID: 4765008409141467079}
+  healthBar: {fileID: 0}
 --- !u!114 &1346154594231488871
 MonoBehaviour:
   m_ObjectHideFlags: 0

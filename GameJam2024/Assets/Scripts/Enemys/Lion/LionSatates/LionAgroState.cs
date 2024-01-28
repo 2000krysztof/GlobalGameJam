@@ -13,6 +13,7 @@ public class LionAgroState : LionBaseState{
     {
         behaviour.StartCoroutine(attackCooldown());
 		behaviour.spriteRenderer.sprite = behaviour.lionDefaultTexture;
+		MonoBehaviour.Destroy(behaviour.detectionRadius);
     }
 
     

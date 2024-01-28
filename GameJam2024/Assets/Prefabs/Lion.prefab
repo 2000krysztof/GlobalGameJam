@@ -114,6 +114,7 @@ MonoBehaviour:
   clips:
   - {fileID: 8300000, guid: d05ed592a384855be99401118f4c7deb, type: 3}
   - {fileID: 8300000, guid: 2ab24687c05aa0f0a8347cc9ee4a73c9, type: 3}
+  detectionRadius: {fileID: 3229898636626463565}
   rigidbody: {fileID: 0}
   spriteRenderer: {fileID: 0}
 --- !u!58 &3229898636626463565

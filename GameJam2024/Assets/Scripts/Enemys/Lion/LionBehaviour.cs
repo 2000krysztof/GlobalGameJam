@@ -29,6 +29,7 @@ public class LionBehaviour : MonoBehaviour, IDamageable
 	public AudioClip[] clips;
 	
 
+	public Collider2D detectionRadius;
 
 	public new Rigidbody2D rigidbody;
 	public SpriteRenderer spriteRenderer;

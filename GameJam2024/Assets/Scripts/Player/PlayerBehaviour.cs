@@ -41,6 +41,9 @@ public class PlayerBehaviour : MonoBehaviour, IDamageable
 
 	public AudioSource audioSource;
 
+	public Transform healthBar;
+
+	private float initialHealth;
     void Start()
     {
 		rigidBody = GetComponent<Rigidbody2D>();
@@ -48,10 +51,12 @@ public class PlayerBehaviour : MonoBehaviour, IDamageable
 		playerSpriteRender = GetComponent<SpriteRenderer>();
 
 		spriteBopComponent = new SpriteBop(transform,bopSpeed, bopScale);
-
+		
 		currentState = defaultState;
 		currentState.EnterState(this);
-    }
+		initialHealth  = health;
+
+	}
 
     void Update()
     {
@@ -88,6 +93,8 @@ public class PlayerBehaviour : MonoBehaviour, IDamageable
 
 	public void takeDamage(float damage){
 		health -= damage;
+		healthBar.localScale = new Vector3(health/initialHealth,1,1);	
+
 		if(health <= 0)
 			SwitchState(deadState);
 	}
@@ -106,9 +113,12 @@ public class PlayerBehaviour : MonoBehaviour, IDamageable
 		currentState.Fire(this);
 	}
 
+	public void OnToggleUi(){
+		UiManager.Singleton.TogglePause();
+	}
+
 
 	
-
 
 	public void SwitchState(PlayerBaseState state){
 		currentState = state;
