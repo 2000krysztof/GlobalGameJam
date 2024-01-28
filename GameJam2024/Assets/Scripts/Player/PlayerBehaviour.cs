@@ -107,7 +107,9 @@ public class PlayerBehaviour : MonoBehaviour, IDamageable
 	}
 
 
-	
+	public void OnActivateUi(){
+		UiManager.Singleton.TogglePause();
+	}
 
 
 	public void SwitchState(PlayerBaseState state){
