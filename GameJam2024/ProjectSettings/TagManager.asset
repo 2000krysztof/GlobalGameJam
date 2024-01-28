@@ -8,10 +8,10 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Player
   - Water
   - UI
-  - 
+  - Walls
   - 
   - 
   - 
@@ -52,4 +52,7 @@ TagManager:
     locked: 0
   - name: roofs
     uniqueID: 413943843
+    locked: 0
+  - name: UI
+    uniqueID: 4086598429
     locked: 0
