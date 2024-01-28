@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class LionAgroState : LionBaseState{
@@ -13,6 +12,7 @@ public class LionAgroState : LionBaseState{
     public override void EnterState(LionBehaviour behaviour)
     {
         behaviour.StartCoroutine(attackCooldown());
+		behaviour.spriteRenderer.sprite = behaviour.lionDefaultTexture;
     }
 
     
@@ -26,7 +26,8 @@ public class LionAgroState : LionBaseState{
 	}
 
 	void TryAttackPlayer(LionBehaviour behaviour){
-		if(canAttack)
+		float dist = Vector3.Distance(behaviour.transform.position, player.transform.position);
+		if(canAttack && dist<behaviour.attackDistance)
 			Attack(behaviour);
 	}
 
