@@ -39,7 +39,6 @@ public class PlayerBehaviour : MonoBehaviour, IDamageable
 
 	public AudioSource audioSource;
 
-	public Transform healthBar;
 
 	private float initialHealth;
     void Start()
@@ -91,7 +90,6 @@ public class PlayerBehaviour : MonoBehaviour, IDamageable
 
 	public void takeDamage(float damage){
 		health -= damage;
-		healthBar.localScale = new Vector3(health/initialHealth,1,1);	
 
 		if(health <= 0)
 			SwitchState(deadState);
