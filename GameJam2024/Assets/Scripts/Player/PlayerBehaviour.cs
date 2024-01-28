@@ -32,10 +32,11 @@ public class PlayerBehaviour : MonoBehaviour, IDamageable
 	public Sprite defaultTexture,
 					pickupTexture,
 					hasHammerTexture,
-					isAttackingTexture;
+					isAttackingTexture,
+					deadTexture;
 
 	public Rigidbody2D rigidBody;
-	
+	public Transform damageArea;
 
     void Start()
     {
@@ -54,7 +55,26 @@ public class PlayerBehaviour : MonoBehaviour, IDamageable
         currentState.UpdateState(this);
 		cameraBehaviour.scaleCameraBasedOnMovement(rigidBody.velocity);
     }
-	
+
+
+	void OnTriggerEnter2D(Collider2D other){
+		HammerStationary hammer;
+		if(!hasHammer && other.TryGetComponent<HammerStationary>(out hammer)){
+			Destroy(hammer.gameObject);
+			hasHammer = true;
+			StartCoroutine(pickupCoolDown());
+
+		}
+	IEnumerator pickupCoolDown(){
+		playerSpriteRender.sprite = pickupTexture;	
+		yield return new WaitForSecondsRealtime(1);
+		playerSpriteRender.sprite = hasHammerTexture;
+	}
+
+	}
+
+
+
 	public void LookAt(Vector2 point){
 		Vector2 difference = (Vector2)transform.position - point;
 		float angle = Mathf.Atan2(difference.y,difference.x)+ Mathf.PI*0.5f; 
@@ -66,12 +86,14 @@ public class PlayerBehaviour : MonoBehaviour, IDamageable
 	
 	public void attack(){
 		SwitchState(atackingState);	
-}	
+	}	
 
 
 
 	public void takeDamage(float damage){
 		health -= damage;
+		if(health <= 0)
+			SwitchState(deadState);
 		//TODO make sure to switch state when this drops below 0;
 	}
 
@@ -89,8 +111,11 @@ public class PlayerBehaviour : MonoBehaviour, IDamageable
 		currentState.Fire(this);
 	}
 
+
+	
+
+
 	public void SwitchState(PlayerBaseState state){
-		print(state);
 		currentState = state;
 		state.EnterState(this);
 	}
