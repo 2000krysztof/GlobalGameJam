@@ -106,6 +106,12 @@ MonoBehaviour:
   lionDefaultTexture: {fileID: 21300000, guid: 19dc16ae5f4302b729404374305be2e5, type: 3}
   lionAttackTexture: {fileID: 21300000, guid: 7cb4210bc2b34852987607d2299e7413, type: 3}
   lionDeadTexture: {fileID: 21300000, guid: e00d9231c14d0771497b099bdc2d597b, type: 3}
+  rigidbody: {fileID: 0}
+  spriteRenderer: {fileID: 0}
+  lionDefaultTexture: {fileID: 21300000, guid: 19dc16ae5f4302b729404374305be2e5, type: 3}
+  lionAttackTexture: {fileID: 21300000, guid: 7cb4210bc2b34852987607d2299e7413, type: 3}
+  lionDeadTexture: {fileID: 21300000, guid: e00d9231c14d0771497b099bdc2d597b, type: 3}
+
 --- !u!58 &3229898636626463565
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -149,14 +155,14 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3261127356476123836}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
