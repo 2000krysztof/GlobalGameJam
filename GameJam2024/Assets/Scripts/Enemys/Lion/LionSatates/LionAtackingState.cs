@@ -15,4 +15,11 @@ public class LionAtackingState : LionBaseState{
 		yield return new WaitForSecondsRealtime(2);
 		behaviour.switchState(behaviour.agroState);
 	}
+
+
+
+    public override void HasCollided(LionBehaviour behaviour, IDamageable damageable)
+    {
+        damageable.takeDamage(2);
+    }
 }

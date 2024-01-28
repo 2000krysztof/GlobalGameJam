@@ -82,11 +82,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6025190609791981870, guid: f4e0ccbc25dded508b81fc5281ae8946, type: 3}
       propertyPath: moveSpeed
-      value: 5
+      value: 1.01
       objectReference: {fileID: 0}
     - target: {fileID: 6025190609791981870, guid: f4e0ccbc25dded508b81fc5281ae8946, type: 3}
       propertyPath: chrageSpeed
-      value: 4
+      value: 3.63
+      objectReference: {fileID: 0}
+    - target: {fileID: 6025190609791981870, guid: f4e0ccbc25dded508b81fc5281ae8946, type: 3}
+      propertyPath: attackDistance
+      value: 2.21
       objectReference: {fileID: 0}
     - target: {fileID: 6025190609791981870, guid: f4e0ccbc25dded508b81fc5281ae8946, type: 3}
       propertyPath: lionDeadTexture

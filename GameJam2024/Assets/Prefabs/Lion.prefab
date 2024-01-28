@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3229898636626463565}
   - component: {fileID: 9165254202528649699}
   - component: {fileID: 4272147793160153646}
+  - component: {fileID: 740387411147288558}
   m_Layer: 0
   m_Name: Lion
   m_TagString: Untagged
@@ -103,7 +104,7 @@ MonoBehaviour:
   health: 100
   moveSpeed: 5
   chrageSpeed: 3
-  attackDistance: 0
+  attackDistance: 0.23
   bopSpeed: 10
   bopHeight: 2
   lionDefaultTexture: {fileID: 21300000, guid: 19dc16ae5f4302b729404374305be2e5, type: 3}
@@ -273,3 +274,38 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!58 &740387411147288558
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3261127356476123836}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5

@@ -324,6 +324,10 @@ PrefabInstance:
       propertyPath: moveSpeed
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6025190609791981870, guid: f4e0ccbc25dded508b81fc5281ae8946, type: 3}
+      propertyPath: attackDistance
+      value: 2.08
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -340,6 +344,7 @@ GameObject:
   - component: {fileID: 784239225}
   - component: {fileID: 784239224}
   - component: {fileID: 784239223}
+  - component: {fileID: 784239226}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -421,6 +426,23 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &784239226
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 784239222}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e402b69f633df992b68065e0e173226, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 1770115354}
+  offset: {x: 0, y: 0, z: -10}
+  speed: 10
+  cameraMaxScale: 5
+  cameraMinScale: 2.5
 --- !u!1001 &986689361
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -475,7 +497,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8373117273164375293, guid: 1cd7053e1348a4cb399588813a6eeac3, type: 3}
       propertyPath: health
-      value: 100
+      value: 17.6
       objectReference: {fileID: 0}
     - target: {fileID: 8373117273164375293, guid: 1cd7053e1348a4cb399588813a6eeac3, type: 3}
       propertyPath: offset
@@ -506,6 +528,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1cd7053e1348a4cb399588813a6eeac3, type: 3}
+--- !u!4 &1770115354 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3345465378672458604, guid: 1cd7053e1348a4cb399588813a6eeac3, type: 3}
+  m_PrefabInstance: {fileID: 986689361}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &323353787737043259
 MonoBehaviour:
   m_ObjectHideFlags: 0
