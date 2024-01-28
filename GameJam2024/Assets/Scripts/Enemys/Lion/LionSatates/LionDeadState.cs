@@ -6,5 +6,8 @@ public class LionDeadState : LionBaseState{
     public override void EnterState(LionBehaviour behaviour)
     {
         behaviour.spriteRenderer.sprite = behaviour.lionDeadTexture;
+		behaviour.rigidbody.velocity = Vector2.zero;
+		behaviour.audioSource.clip = behaviour.clips[Random.Range(0,2)];
+		behaviour.audioSource.Play();
     }
 }
