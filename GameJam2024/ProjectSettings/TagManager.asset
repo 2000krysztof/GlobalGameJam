@@ -47,6 +47,12 @@ TagManager:
   - name: walls
     uniqueID: 472051547
     locked: 0
+  - name: hammer
+    uniqueID: 3212337581
+    locked: 0
+  - name: enemy
+    uniqueID: 2994394385
+    locked: 0
   - name: player
     uniqueID: 4116220343
     locked: 0
