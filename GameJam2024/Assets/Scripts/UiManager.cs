@@ -14,7 +14,6 @@ public class UiManager : MonoBehaviour
         if(Singleton == null){
 			Singleton = this;
 		}else{
-			Destroy(Singleton.gameObject);
 			Singleton = this;
 		}
     }
@@ -54,13 +53,13 @@ public class UiManager : MonoBehaviour
 
 
 	public void BackToMainMenu(){
-
 		SceneManager.LoadScene("Main Menu", LoadSceneMode.Single);
+		SceneManager.UnloadSceneAsync("Level 1");
 	}
 
 	
 	public void StartGame(){
-		SceneManager.LoadScene("Playground", LoadSceneMode.Single);
+		SceneManager.LoadScene("Level 1", LoadSceneMode.Single);
 	}
 
 	public void ExitGame(){

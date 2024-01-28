@@ -10,9 +10,7 @@ public class PlayerBehaviour : MonoBehaviour, IDamageable
 	public PlayerAtackingState atackingState = new PlayerAtackingState();
 	public PlayerDeadState deadState = new PlayerDeadState();
 
-
-	[SerializeField]
-	float moveSpeed =10,
+	public float moveSpeed =10,
 	health = 100;
 	
 	public float hitStrength;
@@ -106,7 +104,7 @@ public class PlayerBehaviour : MonoBehaviour, IDamageable
 
 	public void OnMove(InputValue callback){
 		Vector2 movementDirection = callback.Get<Vector2>();
-		currentState.Move(this, movementDirection);
+		currentState.Move(this, movementDirection*moveSpeed);
 	}
 
 	public void OnFire(){

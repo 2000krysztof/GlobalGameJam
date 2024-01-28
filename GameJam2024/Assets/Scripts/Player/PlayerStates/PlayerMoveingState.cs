@@ -20,8 +20,7 @@ public class PlayerMoveingState : PlayerBaseState{
 
     public override void Move(PlayerBehaviour behaviour, Vector2 direction)
     {
-		behaviour.rigidBody.velocity = direction;
-		base.Move(behaviour, direction);
+		behaviour.rigidBody.velocity = direction  ;
     }
 
 

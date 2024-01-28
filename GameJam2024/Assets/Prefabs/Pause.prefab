@@ -420,6 +420,7 @@ GameObject:
   - component: {fileID: 6866302457168565390}
   - component: {fileID: 2260824465149438268}
   - component: {fileID: -1640627101119676135}
+  - component: {fileID: 6644740166311219790}
   m_Layer: 5
   m_Name: Pause
   m_TagString: Untagged
@@ -564,6 +565,21 @@ MonoBehaviour:
   toggleAbles:
   - {fileID: 271368311440057863}
   - {fileID: 3356811879108641864}
+--- !u!114 &6644740166311219790
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3218714346464442916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_FirstSelected: {fileID: 0}
+  m_sendNavigationEvents: 1
+  m_DragThreshold: 10
 --- !u!1 &5236159697616516709
 GameObject:
   m_ObjectHideFlags: 0
@@ -623,7 +639,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0.4509804}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:

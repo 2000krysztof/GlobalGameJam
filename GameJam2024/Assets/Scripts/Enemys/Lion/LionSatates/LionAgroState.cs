@@ -40,6 +40,7 @@ public class LionAgroState : LionBaseState{
 	}
 
 	IEnumerator attackCooldown(){
+		
 		yield return new WaitForSecondsRealtime(5);
 		canAttack = true;
 	}
